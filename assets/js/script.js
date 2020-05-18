@@ -104,15 +104,31 @@ var charArray = [
 		"`",
 	],
 ];
+function generatePassword(lc, uc, num, spc, pl, ca) {
+	if (!lc && !uc && !num && !spc) {
+		alert(" you must pick atleast one character type");
+	}
+	if (!lc) {
+	}
+}
 
 // Write password to the #password input
 function writePassword() {
 	// you can create a function named generatePassword that creates the password
+
 	var password = generatePassword();
 	var passwordText = document.querySelector("#password");
 
 	passwordText.value = password;
 }
 
+generatePassword(
+	lowerCase,
+	upperCase,
+	numChars,
+	specCars,
+	passLength,
+	charArray
+);
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
