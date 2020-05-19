@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+// declare variables and setup user prompts, confirms and alerts
 var lowerCase = confirm(
 	"would you like to include lowercase characters? click ok for yes or cancel for no:"
 );
@@ -12,9 +13,14 @@ var numChars = confirm(
 var specCars = confirm(
 	"would you like to include special characters? click ok for yes or cancel for no:"
 );
-var passLength = prompt(
-	"how long would you like your password to be? (select a number between 8 and 128)"
+var passLength = parseInt(
+	prompt(
+		"how long would you like your password to be? (select a number between 8 and 128)"
+	),
+	10
 );
+
+// multi dimensional array containing all characters
 
 var charArray = [
 	[
@@ -104,11 +110,36 @@ var charArray = [
 		"`",
 	],
 ];
+// empty array for selected characters
+var selectArray = [];
+//function containing password generation logic
 function generatePassword(lc, uc, num, spc, pl, ca) {
+	//checks that user chose atleast one character set
+
+	if (isNaN(pl)) {
+		alert("you must select a number ");
+	}
 	if (!lc && !uc && !num && !spc) {
 		alert(" you must pick atleast one character type");
 	}
-	if (!lc) {
+
+	if (pl < 8 || pl > 128) {
+		alert("you must select a number between 8 and 128");
+	}
+
+	//creates second array of selected characters
+	if (lc) {
+		selectArray.push(...ca[0]);
+	}
+	if (uc) {
+		selectArray.push(...ca[1]);
+	}
+	if (num) {
+		selectArray.push(...ca[2]);
+	}
+	if (spc) {
+		selectArray.push(...ca[3]);
+		console.log(selectArray);
 	}
 }
 
