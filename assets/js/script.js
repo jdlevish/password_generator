@@ -116,38 +116,36 @@ var passArray = [];
 //function containing password generation logic
 function generatePassword(lc, uc, num, spc, pl, ca) {
 	//checks that user chose atleast one character set
-
-	if (isNaN(pl)) {
-		alert("you must select a number ");
-	}
 	if (!lc && !uc && !num && !spc) {
 		alert(" you must pick atleast one character type");
-	}
-
-	if (pl < 8 || pl > 128) {
+	} else if (isNaN(pl)) {
+		alert("you must select a number ");
+	} else if (pl < 8 || pl > 128) {
 		alert("you must select a number between 8 and 128");
+	} else {
+		//creates second array of selected characters
+		if (lc) {
+			selectArray.push(...ca[0]);
+		}
+		if (uc) {
+			selectArray.push(...ca[1]);
+		}
+		if (num) {
+			selectArray.push(...ca[2]);
+		}
+		if (spc) {
+			selectArray.push(...ca[3]);
+			// console.log(selectArray);
+		}
+		//loop to creat password for random selection from array of selected numbers
+		for (i = 0; i < pl; i++) {
+			passArray.push(
+				selectArray[Math.floor(Math.random() * selectArray.length)]
+			);
+		}
+		//returns passArray as a string
+		return passArray.join("");
 	}
-
-	//creates second array of selected characters
-	if (lc) {
-		selectArray.push(...ca[0]);
-	}
-	if (uc) {
-		selectArray.push(...ca[1]);
-	}
-	if (num) {
-		selectArray.push(...ca[2]);
-	}
-	if (spc) {
-		selectArray.push(...ca[3]);
-		// console.log(selectArray);
-	}
-	//loop to creat password for random selection from array of selected numbers
-	for (i = 0; i < pl; i++) {
-		passArray.push(selectArray[Math.floor(Math.random() * selectArray.length)]);
-	}
-	//returns passArray as a string
-	return passArray.join("");
 }
 // Write password to the #password input
 function writePassword() {
