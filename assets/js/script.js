@@ -112,6 +112,7 @@ var charArray = [
 ];
 // empty array for selected characters
 var selectArray = [];
+var passArray = [];
 //function containing password generation logic
 function generatePassword(lc, uc, num, spc, pl, ca) {
 	//checks that user chose atleast one character set
@@ -139,9 +140,14 @@ function generatePassword(lc, uc, num, spc, pl, ca) {
 	}
 	if (spc) {
 		selectArray.push(...ca[3]);
-		console.log(selectArray);
+		// console.log(selectArray);
 	}
+	//loop to creat password for random selection from array of selected numbers
+	for (i = 0; i < pl; i++)
+		passArray.push(selectArray[Math.floor(Math.random() * selectArray.length)]);
 }
+
+console.log(passArray);
 
 // Write password to the #password input
 function writePassword() {
