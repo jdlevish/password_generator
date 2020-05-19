@@ -143,29 +143,28 @@ function generatePassword(lc, uc, num, spc, pl, ca) {
 		// console.log(selectArray);
 	}
 	//loop to creat password for random selection from array of selected numbers
-	for (i = 0; i < pl; i++)
+	for (i = 0; i < pl; i++) {
 		passArray.push(selectArray[Math.floor(Math.random() * selectArray.length)]);
+	}
+	//returns passArray as a string
+	return passArray.join("");
 }
-
-console.log(passArray);
-
 // Write password to the #password input
 function writePassword() {
 	// you can create a function named generatePassword that creates the password
 
-	var password = generatePassword();
+	var password = generatePassword(
+		lowerCase,
+		upperCase,
+		numChars,
+		specCars,
+		passLength,
+		charArray
+	);
 	var passwordText = document.querySelector("#password");
 
 	passwordText.value = password;
 }
 
-generatePassword(
-	lowerCase,
-	upperCase,
-	numChars,
-	specCars,
-	passLength,
-	charArray
-);
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
