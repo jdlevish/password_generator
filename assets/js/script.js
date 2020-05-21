@@ -1,24 +1,25 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var clearBtn = document.querySelector("#clearField");
 // declare variables and setup user prompts, confirms and alerts
-var lowerCase = confirm(
-	"would you like to include lowercase characters? click ok for yes or cancel for no:"
-);
-var upperCase = confirm(
-	"would you like to include uppercase characters? click ok for yes or cancel for no:"
-);
-var numChars = confirm(
-	"would you like to include numerical characters? click ok for yes or cancel for no:"
-);
-var specCars = confirm(
-	"would you like to include special characters? click ok for yes or cancel for no:"
-);
-var passLength = parseInt(
-	prompt(
-		"how long would you like your password to be? (select a number between 8 and 128)"
-	),
-	10
-);
+// var lowerCase = confirm(
+// 	"would you like to include lowercase characters? click ok for yes or cancel for no:"
+// );
+// var upperCase = confirm(
+// 	"would you like to include uppercase characters? click ok for yes or cancel for no:"
+// );
+// var numChars = confirm(
+// 	"would you like to include numerical characters? click ok for yes or cancel for no:"
+// );
+// var specCars = confirm(
+// 	"would you like to include special characters? click ok for yes or cancel for no:"
+// );
+// var passLength = parseInt(
+// 	prompt(
+// 		"how long would you like your password to be? (select a number between 8 and 128)"
+// 	),
+// 	10
+// );
 
 // multi dimensional array containing all characters
 
@@ -115,7 +116,7 @@ var selectArray = [];
 var passArray = [];
 //function containing password generation logic
 function generatePassword(lc, uc, num, spc, pl, ca) {
-	//checks that user chose atleast one character set
+	//checks that user chose at least one character set
 	if (!lc && !uc && !num && !spc) {
 		alert(" you must pick atleast one character type");
 	} else if (isNaN(pl)) {
@@ -150,6 +151,24 @@ function generatePassword(lc, uc, num, spc, pl, ca) {
 // Write password to the #password input
 function writePassword() {
 	// you can create a function named generatePassword that creates the password
+	var lowerCase = confirm(
+		"would you like to include lowercase characters? click ok for yes or cancel for no:"
+	);
+	var upperCase = confirm(
+		"would you like to include uppercase characters? click ok for yes or cancel for no:"
+	);
+	var numChars = confirm(
+		"would you like to include numerical characters? click ok for yes or cancel for no:"
+	);
+	var specCars = confirm(
+		"would you like to include special characters? click ok for yes or cancel for no:"
+	);
+	var passLength = parseInt(
+		prompt(
+			"how long would you like your password to be? (select a number between 8 and 128)"
+		),
+		10
+	);
 
 	var password = generatePassword(
 		lowerCase,
@@ -163,6 +182,11 @@ function writePassword() {
 
 	passwordText.value = password;
 }
+function clearField() {
+	var passwordText = document.querySelector("#password");
+	passwordText.value = "";
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+clearBtn.addEventListener("click", clearField);
