@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var clearBtn = document.querySelector("#clearField");
+var copyTextbtn = document.querySelector("#copyText");
 //assignment of multi-dimensional array containing characters for password generation
 var charArray = [
 	[
@@ -168,7 +169,16 @@ function clearField() {
 	var passwordText = document.querySelector("#password");
 	passwordText.value = "";
 }
+//function that copies password to clipboard thanks to Johnathan and melinda for making me feel lazy!
+function copyText() {
+	var copyText = document.querySelector("#password");
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+	alert("Copied the text: " + copyText.value);
+}
 
 // Add event listener to generate button and clear field button
 generateBtn.addEventListener("click", writePassword);
 clearBtn.addEventListener("click", clearField);
+copyTextbtn.addEventListener("click", copyText);
